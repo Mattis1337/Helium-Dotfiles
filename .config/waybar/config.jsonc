@@ -1,0 +1,199 @@
+{
+  "layer": "top",
+  "position": "top",
+
+  "modules-left": [
+    "custom/OS",
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+    "custom/date-left",
+    "clock",
+    "custom/date-right"
+  ],
+
+  "modules-right": [
+    "group/misc",
+    "group/volume",
+    "group/brightness",
+    "battery",
+    "network",
+    "tray"
+  ],
+
+  "custom/OS": {
+    "format": ""
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十",
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+
+  "custom/date-left": {
+    "exec": "date '+%a %d'",
+    "interval": 60,
+    "tooltip": false
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "interval": 2,
+    "tooltip": false,
+  },
+
+  "custom/date-right": {
+    "exec": "date '+%b %Y'",
+    "interval": 60,
+    "tooltip": false
+  },
+
+  "group/misc": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "misc-modules",
+      "open-on-hover": true,
+      "closed-size": 22,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/separator",
+      "power-profiles-daemon",
+      "cpu",
+      "memory",
+    ]
+  },
+
+  "custom/separator": {
+    "format": "|",
+    "tooltip": false
+  },
+
+  "custom/notification": {
+    "format": "",
+    "tooltip": false
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  "group/volume": {
+    "orientation": "horizontal",
+    "drawer": {
+      "open-on-hover": true,
+      "transition-duration": 400,
+      "transition-left-to-right": false,
+      "closed-size": 22,
+      "length": 140,
+      "children-class": "volume-drawer"
+    },
+    "modules": [
+      "custom/volicon",
+      "pulseaudio/slider"
+    ]
+  },
+
+  "custom/volicon": {
+    "format": "󰋋",
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰟎",
+    "format-icons": ["󰋋"],
+    "scroll-step": 5
+  },
+
+  "group/brightness": {
+    "orientation": "horizontal",
+    "drawer": {
+      "open-on-hover": true,
+      "transition-duration": 400,
+      "transition-left-to-right": false,
+      "closed-size": 22,
+      "length": 140,
+      "children-class": "brightness-drawer"
+    },
+    "modules": [
+      "custom/brighticon",
+      "backlight/slider"
+    ]
+  },
+
+  "custom/brighticon": {
+    "format": "☀"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "☀ {percent}%",
+    "scroll-step": 2
+  },
+
+  "cpu": {
+    "interval": 10,
+    "format":"{usage}%  ",
+    "max-length": 10,
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": " {}%  ",
+    "max-length": 10
+  },
+
+  "battery": {
+    "bat": "BAT0",
+    "interval": 10,
+    "states": {
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ⚡{icon}",
+    "format-plugged": "{capacity}% ⚡{icon}",  // Optional: same as charging if you want
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "{capacity}% – {timeTo}"
+  },
+
+  "network": {
+    "interface": "wlp1s0",   // Change to your WiFi interface: wlp3s0, wlp2s0, etc.
+                            // Run `ip link` or `nmcli device` to find it
+    "interval": 30,
+    "format-wifi": "{essid} {icon} ",
+    "format-linked": "Linked (no IP)",
+    "format-disconnected": "Disconnected",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],  // Weak → Strong (Nerd Font)
+    "tooltip-format": "IP: {ipaddr}\nSignal: {signalStrength}% ({frequency} GHz)\nInterface: {ifname}",
+    "on-click": "wezterm start -- nmtui"
+  }
+
+}
