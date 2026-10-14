@@ -12,3 +12,5 @@ alias ls='ls --color=auto'
 alias ll='ls -al'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
+
+export PATH=$PATH:/home/mattis/.spicetify
