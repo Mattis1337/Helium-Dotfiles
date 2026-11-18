@@ -14,3 +14,4 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
 export PATH=$PATH:/home/mattis/.spicetify
+export PATH="$HOME/.local/bin:$PATH"
